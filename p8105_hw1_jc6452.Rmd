@@ -1,21 +1,34 @@
 ---
-title: "Simple document"
-output: html_document
+=======
+title: "p8105_hw_jc6452"
+output: github_document
 ---
 
-I'm an R Markdown document! 
+## Import Library
 
-# Section 1
+```{r, message = FALSE}
+library(palmerpenguins)
+library(tidyverse)
+```
+# Problem 1
 
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
+## Data Loading and brief summary/description about the data
 ```{r}
-samp = rnorm(100)
-length(samp)
+data("penguins", package = "palmerpenguins")
+summary(penguins)
+nrow(penguins)
+ncol(penguins)
+print(mean(penguins$flipper_length_mm, na.rm = TRUE))
+```
+Describing `penguins` dataset
+
+The [penguins] dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007, so the oldest penguin would be 17 years old. Some other notable values are the mean values for bill_length, bill_depth and flipper_length is 43.92, 17.15, 200.9, respectively. Surprisingly, the penguins weigh quite a bit with average 4202g (4.202kg). The dataset size is (344 x 8), which means in contains 8 columns and 344 rows total. The mean flipper length is 200.9152, after removing the NA entries. 
+
+# Creating Scatterplot
+```{r scatterplot, echo = FALSE, message = FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave('penguins_flipper_blil_plot.png')
 ```
 
-# Section 2
-
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+>>>>>>> e8f0bf7 (Finalized scatterplot for penguins; started creating tibble for questioiin 2)
