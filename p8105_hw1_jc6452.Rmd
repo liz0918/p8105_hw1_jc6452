@@ -1,6 +1,7 @@
 ---
-=======
 title: "p8105_hw_jc6452"
+author: "Jeong Yun Choi"
+date: 2024-09-17
 output: github_document
 ---
 
@@ -31,4 +32,25 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = s
 ggsave('penguins_flipper_blil_plot.png')
 ```
 
->>>>>>> e8f0bf7 (Finalized scatterplot for penguins; started creating tibble for questioiin 2)
+# Problem 2
+
+## Creating tibble
+
+```{r}
+df = tibble(
+  x = rnorm(10),
+  vector_logical = c(x>0),
+  vector_character = c("this", "is", "P8105", "data", "science", "data", "wrangling", "homework", "one", "problem"),
+  vector_factor = c("low", "high", "high", "medium", "medium", "low", "high", "high", "low", "medium")
+)
+sample = pull(df, x)
+vl = pull (df, vector_logical)
+vc = pull(df, vector_character)
+vf = pull(df, vector_factor)
+
+mean(sample)
+mean(vl)
+mean(vc)
+mean(vf)
+```
+
