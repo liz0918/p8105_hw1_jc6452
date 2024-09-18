@@ -37,7 +37,8 @@ ggsave('penguins_flipper_blil_plot.png')
 ## Creating tibble
 
 ```{r}
-df = tibble(
+df = 
+  tibble(
   x = rnorm(10),
   vector_logical = c(x>0),
   vector_character = c("this", "is", "P8105", "data", "science", "data", "wrangling", "homework", "one", "problem"),
@@ -54,3 +55,13 @@ mean(vc)
 mean(vf)
 ```
 
+The character vector and factor vector cannot be computed by the mean function.
+
+```{r}
+vc = as.numeric(vc)
+vf = as.numeric(vf)
+
+mean(vc)
+mean(vf)
+```
+According to the warning message, "NAs introduced by coercion", and both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable `vc` are string and as they are descriptive, qualitative, and non-numerical. When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed. 
