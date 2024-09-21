@@ -19,7 +19,7 @@ print(mean(penguins$flipper_length_mm, na.rm = TRUE))
 ```
 ## description of *penguins* dataset
 
-The *penguins* dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007 and mean values for bill_length, bill_depth and flipper_length is 43.92, 17.15, 200.9, respectively. The penguins in this dataset weigh an average of 4202g (4.202kg). The dataset size is (344 x 8), which means in contains 8 columns and 344 rows total. The mean flipper length is 200.9152, after removing the NA entries. 
+The *penguins* dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007 and mean values for bill_length_mm, bill_depth_mm and flipper_length_mm is 43.92, 17.15, 200.9, respectively. The penguins in this data set weigh an average of 4202g (4.202kg). The data set size is (344 x 8), which means in contains 344 rows and 8 columns total. The mean flipper length is 200.9152, after removing the NA entries. 
 
 ## creating penguins scatterplot
 ```{r scatterplot}
@@ -54,7 +54,7 @@ mean(pull_VF)
 The character vector and factor vector cannot be computed by the mean function.
 
 ## numeric logical, character and factor vector
-```{r numeric, }
+```{r numeric, eval = FALSE }
 numeric_vl = as.numeric(pull_VL)
 numeric_vc = as.numeric(pull_VC)
 numeric_vf = as.numeric(pull_VF)
@@ -64,4 +64,4 @@ mean(numeric_vc)
 mean(numeric_vf)
 ```
 
-According to the warning message, "NAs introduced by coercion", and both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable such as `pull_VC` or `pull_VF`, are string and as they are descriptive, and non-numerical. Unlike the two, logical vector outputted mean of 0.5 as logical vector is boolean, hence its output can be computed in numerical term (0 when FALSE and 1 when TRUE). When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed while logical vectors can be. 
+According to the warning message, "NAs introduced by coercion" for both   `numeric_vc` and `numeric_vf`. Both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable are string, a descriptive, and non-numerical type variable. Unlike the two, logical vector outputted mean of 0.5 as logical vector is boolean, hence its output can be computed in numerical term (0 when FALSE and 1 when TRUE). When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed while logical vectors can be. 
