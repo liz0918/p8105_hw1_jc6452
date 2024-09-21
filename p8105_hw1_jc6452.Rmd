@@ -3,14 +3,14 @@ title: "p8105_hw1_jc6452"
 output: github_document
 ---
 
-```{r,echo = FALSE, message = FALSE}
+```{r library,echo = FALSE, message = FALSE}
 library(palmerpenguins)
 library(tidyverse)
 ```
 # Problem 1
 
 ## importing data
-```{r}
+```{r import}
 data("penguins", package = "palmerpenguins")
 summary(penguins)
 nrow(penguins)
@@ -32,7 +32,7 @@ ggsave('penguins_flipper_blil_plot.png')
 
 ## creating tibble
 
-```{r}
+```{r tibble}
 df = 
   tibble(
   x = rnorm(10),
@@ -53,13 +53,15 @@ mean(pull_VF)
 
 The character vector and factor vector cannot be computed by the mean function.
 
-##numeric character vector and factor vector
-```{r}
+## numeric logical, character and factor vector
+```{r numeric, }
+numeric_vl = as.numeric(pull_VL)
 numeric_vc = as.numeric(pull_VC)
 numeric_vf = as.numeric(pull_VF)
 
+mean(numeric_vl)
 mean(numeric_vc)
 mean(numeric_vf)
 ```
 
-According to the warning message, "NAs introduced by coercion", and both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable `vc` are string and as they are descriptive, qualitative, and non-numerical. When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed. 
+According to the warning message, "NAs introduced by coercion", and both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable such as `pull_VC` or `pull_VF`, are string and as they are descriptive, and non-numerical. Unlike the two, logical vector outputted mean of 0.5 as logical vector is boolean, hence its output can be computed in numerical term (0 when FALSE and 1 when TRUE). When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed while logical vectors can be. 
