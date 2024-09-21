@@ -19,7 +19,7 @@ print(mean(penguins$flipper_length_mm, na.rm = TRUE))
 ```
 ## description of *penguins* dataset
 
-The *penguins* dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007 and mean values for bill_length_mm, bill_depth_mm and flipper_length_mm is 43.92, 17.15, 200.9, respectively. The penguins in this data set weigh an average of 4202g (4.202kg). The data set size is (344 x 8), which means in contains 344 rows and 8 columns total. The mean flipper length is 200.9152, after removing the NA entries. 
+The *penguins* dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007 and mean values for bill_length_mm, bill_depth_mm and flipper_length_mm is 43.92, 17.15, 200.9, respectively. The penguins in this data set weigh an average of 4202g (4.202kg). The data set contains 344 rows and 8 columns total. The mean flipper length is 200.9152mm, after removing the NA entries. 
 
 ## creating penguins scatterplot
 ```{r scatterplot}
