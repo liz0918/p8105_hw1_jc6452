@@ -1,19 +1,15 @@
 ---
-title: "p8105_hw_jc6452"
-author: "Jeong Yun Choi"
-date: 2024-09-17
+title: "p8105_hw1_jc6452"
 output: github_document
 ---
 
-## Import Library
-
-```{r, message = FALSE}
+```{r,echo = FALSE, message = FALSE}
 library(palmerpenguins)
 library(tidyverse)
 ```
 # Problem 1
 
-## Data Loading and brief summary/description about the data
+## importing data
 ```{r}
 data("penguins", package = "palmerpenguins")
 summary(penguins)
@@ -21,12 +17,12 @@ nrow(penguins)
 ncol(penguins)
 print(mean(penguins$flipper_length_mm, na.rm = TRUE))
 ```
-Describing `penguins` dataset
+## description of *penguins* dataset
 
-The [penguins] dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007, so the oldest penguin would be 17 years old. Some other notable values are the mean values for bill_length, bill_depth and flipper_length is 43.92, 17.15, 200.9, respectively. Surprisingly, the penguins weigh quite a bit with average 4202g (4.202kg). The dataset size is (344 x 8), which means in contains 8 columns and 344 rows total. The mean flipper length is 200.9152, after removing the NA entries. 
+The *penguins* dataset includes the following 8 variables, species,island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Some of the notable values of the variables include is that the earliest year listed is 2007 and mean values for bill_length, bill_depth and flipper_length is 43.92, 17.15, 200.9, respectively. The penguins in this dataset weigh an average of 4202g (4.202kg). The dataset size is (344 x 8), which means in contains 8 columns and 344 rows total. The mean flipper length is 200.9152, after removing the NA entries. 
 
-# Creating Scatterplot
-```{r scatterplot, echo = FALSE, message = FALSE}
+## creating penguins scatterplot
+```{r scatterplot}
 ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
 ggsave('penguins_flipper_blil_plot.png')
@@ -34,7 +30,7 @@ ggsave('penguins_flipper_blil_plot.png')
 
 # Problem 2
 
-## Creating tibble
+## creating tibble
 
 ```{r}
 df = 
@@ -45,23 +41,25 @@ df =
   vector_factor = c("low", "high", "high", "medium", "medium", "low", "high", "high", "low", "medium")
 )
 sample = pull(df, x)
-vl = pull (df, vector_logical)
-vc = pull(df, vector_character)
-vf = pull(df, vector_factor)
+pull_VL = pull (df, vector_logical)
+pull_VC = pull(df, vector_character)
+pull_VF = pull(df, vector_factor)
 
 mean(sample)
-mean(vl)
-mean(vc)
-mean(vf)
+mean(pull_VL)
+mean(pull_VC)
+mean(pull_VF)
 ```
 
 The character vector and factor vector cannot be computed by the mean function.
 
+##numeric character vector and factor vector
 ```{r}
-vc = as.numeric(vc)
-vf = as.numeric(vf)
+numeric_vc = as.numeric(pull_VC)
+numeric_vf = as.numeric(pull_VF)
 
-mean(vc)
-mean(vf)
+mean(numeric_vc)
+mean(numeric_vf)
 ```
+
 According to the warning message, "NAs introduced by coercion", and both the character vector and factor vector, which has been applied with `as.numeric` function, outputted NA when I tried to compute the mean. This is because these are string type variables where the values inside the variable `vc` are string and as they are descriptive, qualitative, and non-numerical. When viewing the `mean` function, there are methods for numeric/logical vectors, and date, date-time and time interval objects. Therefore, character and factor vectors cannot be computed. 
